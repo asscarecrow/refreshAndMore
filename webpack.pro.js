@@ -8,7 +8,10 @@ module.exports = function(env){
  
 
   return merge(baseConfig,{
-   
+   output: {
+        path:__dirname + '/build/static/',
+        publicPath: './static/',
+    },
     plugins: [
     new webpack.optimize.UglifyJsPlugin({
       compress: {

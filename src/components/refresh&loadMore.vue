@@ -114,9 +114,6 @@ export default {
                 3. 向外暴露刷新跟加载更多的接口
                 4. 父组件返回刷新、加载更多结果
             */
-            // const $page = document.getElementById('rWrap');//包裹元素
-            // const $page_wrap = document.getElementById('rScroll');//可滚动元素
-            // const $refresh_wrap = $page.querySelector('.refresh-wrap');//刷新元素
             const $page = this.$refs.rWrap;
             const $page_wrap = this.$refs.rScroll;
             const $refresh_wrap = this.$refs.refreshWrap;
