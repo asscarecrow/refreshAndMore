@@ -31,6 +31,7 @@ const refreshMore = r => require.ensure([], () => r(require("components/refresh&
                 this.isRefresh=0;
                 setTimeout(()=>{
                     this.list=20;
+                    console.log('1')
                     this.isRefresh = 1;
                 },2000)
             },

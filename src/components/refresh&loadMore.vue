@@ -2,7 +2,7 @@
 <div id='rWrap' ref='rWrap'>
     <div id='rScroll' ref='rScroll'>
         <div class="weui-loadmore refresh-wrap" ref='refreshWrap'>
-            <span class="weui-loadmore__tips" v-if='isRefresh!=1'>刷新成功</span>
+            <span class="weui-loadmore__tips" v-if='isRefresh==1'>下拉刷新</span>
             <span  v-else>
                 <i class="weui-loading"></i>
                 <span class="weui-loadmore__tips">加载中…………</span>
@@ -10,8 +10,8 @@
         </div>
         <slot></slot>
          <div class="weui-loadmore more-wrap" :class="{'weui-loadmore_line':loadEnd,}">
-        <i class="weui-loading" v-if='!loadEnd'></i>
-        <span class="weui-loadmore__tips"  v-text='loadEnd? "暂无数据":"加载中…………"'></span>
+        <i class="weui-loading" v-if='!loadEnd&&isLoad==0'></i>
+        <span class="weui-loadmore__tips"  v-text='load_tip' ></span>
     </div>
     </div>
 </div>
@@ -56,6 +56,17 @@ export default {
             l_state:'',
             diff:'',//移动的距离，
             flag:0,// 默认值0 进入刷新域1 进入loadMore域2
+        }
+    },
+    computed:{
+        load_tip(){
+            if(this.loadEnd){
+                return '暂无数据';
+            }else if(this.isLoad==0){
+                return '正在加载';
+            }else {
+                return '加载更多';
+            }
         }
     },
     watch:{
