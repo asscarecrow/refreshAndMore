@@ -31,14 +31,13 @@ const refreshMore = r => require.ensure([], () => r(require("components/refresh&
                 this.isRefresh=0;
                 setTimeout(()=>{
                     this.list=20;
-                    console.log('1')
                     this.isRefresh = 1;
                 },2000)
             },
             toLoad(){
                this.isLoad=0;
                setTimeout(()=>{
-                   if(this.list<200){
+                   if(this.list<80){
                       this.list+=10;
                      
                    }else {
