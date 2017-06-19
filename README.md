@@ -16,6 +16,7 @@
 |refresh_h|Number|60|距离顶部触发刷新的值|
 |range|Number|130|刷新下拉允许出现的最大空白值|
 |loadEnd|Boolean|false|没有更多数据可以加载了|
+|noData|Boolean|false|首次加载没有数据|
 
 
 | Methods|Args|Required|Description|

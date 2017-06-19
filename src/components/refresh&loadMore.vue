@@ -5,11 +5,11 @@
             <span class="weui-loadmore__tips" v-if='isRefresh==1'>下拉刷新</span>
             <span  v-else>
                 <i class="weui-loading"></i>
-                <span class="weui-loadmore__tips">加载中…………</span>
+                <span class="weui-loadmore__tips">加载中…</span>
             </span>
         </div>
         <slot></slot>
-         <div class="weui-loadmore more-wrap" :class="{'weui-loadmore_line':loadEnd,}">
+         <div class="weui-loadmore more-wrap" :class="{'weui-loadmore_line':noData}" >
         <i class="weui-loading" v-if='!loadEnd&&isLoad==0'></i>
         <span class="weui-loadmore__tips"  v-text='load_tip' ></span>
     </div>
@@ -48,6 +48,10 @@ export default {
         loadEnd:{ //没有更多数据可以加载
             type:Boolean,
             default:false
+        },
+        noData:{//首次加载无数据
+            type:Boolean,
+            default:false
         }
     },
     data(){
@@ -61,11 +65,13 @@ export default {
     computed:{
         load_tip(){
             if(this.loadEnd){
-                return '暂无数据';
+                return '没有了';
             }else if(this.isLoad==0){
                 return '正在加载';
-            }else {
-                return '加载更多';
+            }else if(this.noData){
+                return '暂无数据';
+            }else{
+                return '上滑加载更多';
             }
         }
     },
@@ -119,7 +125,6 @@ export default {
             const $refresh_wrap = this.$refs.refreshWrap;
             const $win_h = window.innerHeight;
            
-            var pageNow = 1;
             var vm = this;
             var _data={}; //存放私有变量
             $page.addEventListener('touchstart',(e)=>{
@@ -198,4 +203,5 @@ export default {
 .refresh-wrap {margin-top: -44px;}
 #rScroll {position: relative;padding-bottom: 45px;}
 #rScroll .more-wrap{position: absolute;width: 100%;left: 0;bottom: -25px;}
+.weui-loadmore__tips {font-size: 0.14rem;color: #999;}
 </style>
