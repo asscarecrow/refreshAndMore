@@ -43,10 +43,11 @@ module.exports = {
                 // use: ExtractTextPlugin.extract({
                 //     use:"css-loader" //方法二 第一步*
                 // })
-            }, {
+            },
+             {
                 test: /\.scss$/, 
                 use: ExtractTextPlugin.extract({
-                    use: "css-loader!resolve-url-loader!ruby-sass-loader?compass=1",
+                    use: "css-loader!resolve-url-loader!ruby-sass-loader",
                     publicPath:"./"//如果没有定义，图片资源就会默认使用output的publicPath
                 }),
                 
